@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dom Ready Test</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Dom Ready Test</h1>
+      <p><a href="https://www.webpagetest.org/">Web Page Test</a></p>
+    </main>
+  </body>
+  <script type="text/javascript">
+    function styleSheetErrorHandler(filename) {
+      var p = document.createElement('div');
+      p.innerHTML = filename + ': Error';
+      document.querySelector('main.container').append(p);
+    }
+    function styleSheetLoadHandler(filename) {
+      var p = document.createElement('div');
+      p.innerHTML = filename + ': Loaded';
+      document.querySelector('main.container').append(p);
+    }
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var p = document.createElement('div');
+      p.innerHTML = 'DOM Content Loaded';
+      document.querySelector('main.container').append(p);
+      var head  = document.getElementsByTagName('head')[0];
+      var link  = document.createElement('link');
+      link.id   = 'cdn-1-css-fallback';
+      link.rel  = 'stylesheet';
+      link.type = 'text/css';
+      link.href = 'https://cdn-1.lifehack.org/wp-content/themes/lifehack-theme/css/default.css';
+      link.media = 'all';
+      link.onload = function() {
+        styleSheetLoadHandler("CDN 1");
+      }
+      link.onerror = function() {
+        styleSheetErrorHandler("CDN 1");
+      }
+      head.appendChild(link);
+    });
+  </script>
+</html>
