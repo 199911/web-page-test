@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>CDN Test</title>
+
+    <!-- Lifehack CSS -->
+    <script type="text/javascript">
+      function styleSheetErrorHandler(filename) {
+        var p = document.createElement('div');
+        p.innerHTML = filename + ': Error';
+        document.querySelector('main.container').append(p);
+      }
+      function styleSheetLoadHandler(filename) {
+        var p = document.createElement('div');
+        p.innerHTML = filename + ': Loaded';
+        document.querySelector('main.container').append(p);
+      }
+    </script>
+    <link
+      href="https://cdn-1.lifehack.org/wp-content/themes/lifehack-theme/css/default.css"
+      rel="stylesheet"
+      onerror="styleSheetErrorHandler('CDN 1')"
+      onload="styleSheetLoadHandler('CDN 1')"
+    >
+    <link
+      href="https://cdn-2.lifehack.org/wp-content/themes/lifehack-theme/css/default.css"
+      rel="stylesheet"
+      onerror="styleSheetErrorHandler('CDN 2')"
+      onload="styleSheetLoadHandler('CDN 2')"
+    >
+    <link
+      href="https://cdn-3.lifehack.org/wp-content/themes/lifehack-theme/css/default.css"
+      rel="stylesheet"
+      onerror="styleSheetErrorHandler('CDN 3')"
+      onload="styleSheetLoadHandler('CDN 3')"
+    >
+    <link
+      href="https://cdn-4.lifehack.org/wp-content/themes/lifehack-theme/css/default.css"
+      rel="stylesheet"
+      onerror="styleSheetErrorHandler('CDN 4')"
+      onload="styleSheetLoadHandler('CDN 4')"
+    >
+    <link
+      href="https://cdn-5.lifehack.org/wp-content/themes/lifehack-theme/css/default.css"
+      rel="stylesheet"
+      onerror="styleSheetErrorHandler('CDN 5')"
+      onload="styleSheetLoadHandler('CDN 5')"
+    >
+
+  </head>
+  <body>
+    <main class="container">
+      <h1>Webpage Test</h1>
+      <p>Ref: <a href="https://pie.gd/test/script-link-events/">Browser CSS/JS loading capabilities</a></p>
+    </main>
+  </body>
+
+</html>
